@@ -1,0 +1,10 @@
+2026-11-02T13:21  repo my-app.site created empty (user), zero commits
+2026-11-02T14:05  website starter validated in old repo /workspace: build+lint+typecheck+8 tests green
+2026-11-02T14:07  SDK Phase 1 pushed to platform.onenext branch sdk-phase1 (82 tests, 91.9% cov, PR#1)
+2026-11-02T14:10  Cloudflare chosen over Vercel Hobby: Hobby bans commercial use; CF Free has no such ban and allows SQLite-backed DO
+2026-11-02T14:20  Worker skeleton written, dry-run OK (1.16KiB), pushed as PR#2 on old repo
+2026-11-02T14:25  wrangler device-flow login timed out 2x (user approving slow); fallback --temporary worked
+2026-11-02T14:31  DEPLOYED to workers.dev preview: platform-onenext.mysterious-draw.workers.dev (claim URL valid 60min)
+2026-11-02T14:33  BUG FOUND: /v1/users -> error 1042/404 instead of 501, run_worker_first glob not matching as expected
+2026-11-02T14:40  MIGRATION: all code (46 files: web + sdk + cloudflare) moved from platform.onenext to my-app.site main
+2026-11-02T14:40  memory system added: MEMORY.md + memory/decisions.log, agent-owned, committed with each change
