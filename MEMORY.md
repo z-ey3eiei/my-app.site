@@ -19,7 +19,7 @@ Last updated: 2026-11-02
 | — `/v1/status` | 200 JSON | `{"ok":true,"runtime":"cloudflare-workers"}` |
 | — `/` SPA + deep links | 200 | `/docs/pricing` → 200 (SPA fallback) |
 | — CORS preflight `/v1/*` | 204 + allow-* | verified with curl |
-| — `/v1/users` etc | **404 code 1042, NOT 501** | open bug, see NEXT |
+| — `/v1/users` etc | **501 not_implemented** (correct) | verified 14:52 after `run_worker_first: true` |
 | GitHub Actions workflows | blocked | token lacks `workflow` scope; files live in old repo only |
 | Vercel (`platform-onenext`) | superseded | Hobby plan bans commercial use → do not build on it |
 
@@ -32,7 +32,7 @@ npx wrangler deploy --temporary             # no login; URL is claimable for 60 
 `run_worker_first: ["/v1/*"]`. Build the web app first: `npm run build`.
 
 ## NEXT (priority order)
-1. Fix `/v1/*` 404: `run_worker_first: ["/v1/*"]` did not route `/v1/users` to the Worker (got `error code: 1042`). Try `run_worker_first: true` and re-test.
+1. ~~Fix `/v1/*` routing~~ DONE: `run_worker_first: ["/v1/*"]` never matched (got error 1042); `run_worker_first: true` fixed it -> 501. Keep `true`; the glob form is broken with SPA fallback.
 2. Rebuild `src/App.tsx` from branch `starter` of the old repo and deploy the full site (live site is still the 9-file minimal page).
 3. Phase 2 API in the Worker: `/v1/auth/*`, `/v1/db/query` — must keep the `{ data, error }` shape the SDK already expects.
 4. Realtime later = **SQLite-backed Durable Object only** (KV-backed DO namespaces cannot be created on Free, and block downgrade).

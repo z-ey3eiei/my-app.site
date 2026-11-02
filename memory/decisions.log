@@ -8,3 +8,5 @@
 2026-11-02T14:33  BUG FOUND: /v1/users -> error 1042/404 instead of 501, run_worker_first glob not matching as expected
 2026-11-02T14:40  MIGRATION: all code (46 files: web + sdk + cloudflare) moved from platform.onenext to my-app.site main
 2026-11-02T14:40  memory system added: MEMORY.md + memory/decisions.log, agent-owned, committed with each change
+2026-11-02T14:52  FIX VERIFIED: run_worker_first true (boolean, not "/v1/*" glob) -> /v1/users now returns 501 not_implemented; previously 404/error 1042. Proven on temporary preview deploy platform-onenext.mysterious-draw.workers.dev
+2026-11-02T14:52  device-flow login timed out a 4th time (code ChesVHpy). Approval latency is the failure mode. Fresh code issued at 14:53, agent watching for auth to auto-deploy to the real account
